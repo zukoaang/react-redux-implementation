@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './Playlist.css';
+import './index.css';
 
 class Playlist extends Component {
   render() {
