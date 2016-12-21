@@ -7,7 +7,7 @@ class PlaylistList extends Component {
     return(
       <div className='PlaylistList'>
         {
-          this.props.playlists.map(playlist => {
+          this.props.playlistsArray.map(playlist => {
             return <Playlist key={playlist.id} name={playlist.name} image={playlist.image}></Playlist>
           })
         }

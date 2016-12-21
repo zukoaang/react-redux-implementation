@@ -7,7 +7,7 @@ import { getPlaylists } from '../../store/playlists/reducer';
 import { connect } from 'react-redux';
 
 class App extends Component {
-  componentWillReceiveProps() {
+  componentDidMount() {
     this.props.dispatch(fetchPlaylists());
   }
   render() {
@@ -17,15 +17,19 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Welcome to My Music Store</h2>
         </div>
-        <PlaylistList playlists={this.props.playlists}></PlaylistList>
+        <PlaylistList playlistsArray={this.props.playlistsArray} playlistIds={this.props.playlistIds}></PlaylistList>
       </div>
     );
   }
 }
 
 function mapStateToProps(state) {
-  console.dir(state.playlistsReducer)
-  return {playlists: getPlaylists(state.playlistsReducer)}
+  const playlistsArray = getPlaylists(state).playlistsArray;
+  const playlistIds = getPlaylists(state).playlistIds;
+  return {
+    playlistsArray,
+    playlistIds
+  }
 }
 
 export default connect(mapStateToProps)(App);

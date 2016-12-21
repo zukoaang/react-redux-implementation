@@ -1,3 +1,3 @@
-import playlistsReducer from './playlists/reducer';
+import playlists from './playlists/reducer';
 
-export { playlistsReducer };
+export { playlists };

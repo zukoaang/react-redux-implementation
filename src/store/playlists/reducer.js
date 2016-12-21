@@ -16,12 +16,17 @@ export default function reduce(state = initialState, action = {}){
         playlistsById: action.playlistsById
       })
     default: return state
-
   }
 }
 
 export function getPlaylists(state) {
-  let playlistsById = state.playlistsById;
-  let playlistIds = _mapKeys(state.playlistsById);
-  // console.dir({playlistsById, playlistIds});
+  const playlistsArray = [];
+  _mapValues(state.playlists.playlistsById, o => {
+      playlistsArray.push({id: o.id, name: o.name, image: o.image })
+  });
+  const playlistIds = [];
+  _mapKeys(state.playlists.playlistsById , (value, key) => {
+    playlistIds.push(key);
+  });
+   return {playlistsArray, playlistIds};
 }
